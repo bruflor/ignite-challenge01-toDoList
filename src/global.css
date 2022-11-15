@@ -14,6 +14,7 @@
   --purple-dark: #5e60ce;
   --purple: #8284fa;
 }
+
 :focus {
   outline: transparent;
   border: 1px solid var(--purple-dark);
@@ -26,12 +27,13 @@
 body {
   background: var(--gray-600);
   color: var(--gray-100);
-  -webkit-font-smoothing: antialiased;
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
   font-weight: 400;
+  -webkit-font-smoothing: antialiased;
 }
+
 body,
 input,
 textarea,
