@@ -1,7 +1,8 @@
 import "./global.css";
 import Logo from "./assets/LogoToDo.svg";
 import styles from "./App.module.css";
-import { PlusCircle, TextBolder, Trash } from "phosphor-react";
+import { PlusCircle, Trash } from "phosphor-react";
+import { TaskCard } from "./components/taskCard";
 
 const tasks = [
   {
@@ -44,18 +45,7 @@ export const App = () => {
         </div>
         <div className={styles.tasksContainer}>
           {tasks.map((task) => {
-            return (
-              <div className={styles.task}>
-                <div>
-                  <input type="checkbox" id={task.title} />
-                  <label htmlFor={task.title}></label>
-                  <span>{task.title}</span>
-                </div>
-                <button title="Deletar tarefa">
-                  <Trash size={24} />
-                </button>{" "}
-              </div>
-            );
+            return <TaskCard title={task.title} id={Math.random()} />;
           })}
         </div>
       </div>
