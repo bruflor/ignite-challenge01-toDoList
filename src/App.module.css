@@ -94,12 +94,15 @@
 .task {
   background: var(--gray-500);
   padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+.task div {
   position: relative;
   display: flex;
   gap: 2rem;
 }
-
-.task label {
+.task div label {
   background-color: transparent;
   border: 2px solid var(--blue);
   border-radius: 50%;
@@ -109,11 +112,11 @@
   width: 1.5rem;
   transition: background-color 0.1s;
 }
-.task label:hover {
+.task div label:hover {
   border: 2px solid var(--blue-dark);
 }
 
-.task label:after {
+.task div label:after {
   border: 2px solid var(--gray-100);
   border-top: none;
   border-right: none;
@@ -127,20 +130,36 @@
   transform: rotate(-45deg);
 }
 
-.task input[type="checkbox"] {
+.task div input[type="checkbox"] {
   visibility: hidden;
 }
 
-.task input[type="checkbox"]:checked + label {
+.task div input[type="checkbox"]:checked + label {
   background-color: var(--purple-dark);
   border-color: var(--purple-dark);
   transition: background-color 0.1s;
 }
-.task input[type="checkbox"]:checked:hover + label {
+.task div input[type="checkbox"]:checked:hover + label {
   background-color: var(--purple);
   border-color: var(--purple);
 }
 
-.task input[type="checkbox"]:checked + label:after {
+.task div input[type="checkbox"]:checked + label:after {
   opacity: 1;
+}
+
+.task button {
+  padding: 0.2rem;
+  display: flex;
+  align-item: center;
+  border-radius: 4px;
+  background: transparent;
+  border: 0;
+  color: var(--gray-300);
+  cursor: pointer;
+}
+.task button:hover {
+  background: var(--gray-400);
+  border: 0;
+  color: var(--danger);
 }

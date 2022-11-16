@@ -1,7 +1,7 @@
 import "./global.css";
 import Logo from "./assets/LogoToDo.svg";
 import styles from "./App.module.css";
-import { PlusCircle, TextBolder } from "phosphor-react";
+import { PlusCircle, TextBolder, Trash } from "phosphor-react";
 
 const tasks = [
   {
@@ -46,10 +46,14 @@ export const App = () => {
           {tasks.map((task) => {
             return (
               <div className={styles.task}>
-                <input type="checkbox" id={task.title} />
-                <label htmlFor={task.title}></label>
-                <span>{task.title}</span>
-                {/* <button>{""}</button> */}
+                <div>
+                  <input type="checkbox" id={task.title} />
+                  <label htmlFor={task.title}></label>
+                  <span>{task.title}</span>
+                </div>
+                <button title="Deletar tarefa">
+                  <Trash size={24} />
+                </button>{" "}
               </div>
             );
           })}
