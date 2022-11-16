@@ -15,42 +15,6 @@
   }
 }
 
-
-
-.formContainer {
-  height: 54px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 0.15fr;
-  gap: 8px;
-  margin-top: calc(0px - 1.5rem - 6px);
-}
-
-.formContainer input {
-  background: var(--gray-500);
-  border-radius: 8px;
-  border: 0;
-  padding: 1rem;
-  color: var(--gray-100);
-}
-
-.formContainer button {
-  background: var(--blue-dark);
-  color: var(--gray-100);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  border: 0;
-  border-radius: 8px;
-  font-weight: bold;
-}
-
-.formContainer button:hover {
-  background: var(--blue);
-  cursor: pointer;
-}
-
 .status {
   display: flex;
   margin: 4rem auto;

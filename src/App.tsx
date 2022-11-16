@@ -7,6 +7,11 @@ import { Header } from "./components/Header";
 import { NewTask } from "./components/NewTask";
 import { useState } from "react";
 
+export interface TasksProps {
+  title: string;
+  isComplete: boolean;
+  id: string;
+}
 const initialTasks = [
   {
     title: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
@@ -28,7 +33,13 @@ const initialTasks = [
 export const App = () => {
   const [tasks, setTasks] = useState(initialTasks);
   const completedTasksFilter = tasks.filter((task) => task.isComplete === true);
-  console.log(completedTasksFilter);
+
+  function deleteTask(taskTitleToDelete: string) {
+    const tasksWithoutDeletedOne = tasks.filter((task) => {
+      return task.title !== taskTitleToDelete;
+    });
+    setTasks(tasksWithoutDeletedOne);
+  }
   return (
     <div className={styles.app}>
       <Header />
@@ -46,7 +57,13 @@ export const App = () => {
         </div>
         <div className={styles.tasksContainer}>
           {tasks.map((task) => {
-            return <TaskCard key={task.id} title={task.title} />;
+            return (
+              <TaskCard
+                key={task.id}
+                title={task.title}
+                onDeleteTask={deleteTask}
+              />
+            );
           })}
         </div>
       </div>
