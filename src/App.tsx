@@ -1,31 +1,32 @@
 import "./global.css";
-import Logo from "./assets/LogoToDo.svg";
 import styles from "./App.module.css";
+import { v4 as uuidv4 } from "uuid";
 import { PlusCircle, Trash } from "phosphor-react";
-import { TaskCard } from "./components/taskCard";
+import { TaskCard } from "./components/TaskCard";
+import { Header } from "./components/Header";
 
 const tasks = [
   {
     title: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
     isComplete: true,
+    id: uuidv4(),
   },
   {
     title:
       "Quae dolore odio iure facilis ipsam nisi omnis quisquam quibusdam corrupti quod, officia, id, mollitia quia earum vero.",
     isComplete: false,
+    id: uuidv4(),
   },
   {
     title: "Accusamus laudantium nisi ullam!",
     isComplete: false,
+    id: uuidv4(),
   },
 ];
-
 export const App = () => {
   return (
     <div className={styles.app}>
-      <div className={styles.header}>
-        <img src={Logo} />
-      </div>
+      <Header />
       <div className={styles.wrapper}>
         <form className={styles.formContainer}>
           <input placeholder="Adicione uma nova tarefa" />
@@ -45,7 +46,7 @@ export const App = () => {
         </div>
         <div className={styles.tasksContainer}>
           {tasks.map((task) => {
-            return <TaskCard title={task.title} id={Math.random()} />;
+            return <TaskCard key={task.id} title={task.title} />;
           })}
         </div>
       </div>
