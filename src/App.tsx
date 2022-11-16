@@ -42,9 +42,16 @@ export const App = () => {
             <span>2 de 5</span>
           </div>
         </div>
-        <div className="">
+        <div className={styles.tasksContainer}>
           {tasks.map((task) => {
-            return <div>{task.title}</div>;
+            return (
+              <div className={styles.task}>
+                <input type="checkbox" id={task.title} />
+                <label htmlFor={task.title}></label>
+                <span>{task.title}</span>
+                {/* <button>{""}</button> */}
+              </div>
+            );
           })}
         </div>
       </div>
