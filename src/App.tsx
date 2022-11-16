@@ -1,6 +1,7 @@
 import "./global.css";
 import Logo from "./assets/LogoToDo.svg";
 import styles from "./App.module.css";
+import { PlusCircle, TextBolder } from "phosphor-react";
 
 const tasks = [
   {
@@ -25,9 +26,11 @@ export const App = () => {
         <img src={Logo} />
       </div>
       <main>
-        <form>
-          <input />
-          <button>Criar + icon</button>
+        <form className={styles.formContainer}>
+          <input placeholder="Adicione uma nova tarefa" />
+          <button>
+            Criar <PlusCircle size={20} weight="bold" />
+          </button>
         </form>
         <div>
           <div>
