@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { PlusCircle, Trash } from "phosphor-react";
 import { TaskCard } from "./components/TaskCard";
 import { Header } from "./components/Header";
+import { NewTask } from "./components/NewTask";
 
 const tasks = [
   {
@@ -28,12 +29,7 @@ export const App = () => {
     <div className={styles.app}>
       <Header />
       <div className={styles.wrapper}>
-        <form className={styles.formContainer}>
-          <input placeholder="Adicione uma nova tarefa" />
-          <button>
-            Criar <PlusCircle size={20} weight="bold" />
-          </button>
-        </form>
+        <NewTask />
         <div className={styles.status}>
           <div>
             <p>Tarefas criadas</p>
