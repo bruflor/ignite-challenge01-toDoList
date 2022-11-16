@@ -1,11 +1,10 @@
 import { Trash } from "phosphor-react";
-import styles from "./taskCard.module.css";
+import styles from "./TaskCard.module.css";
 
 interface TaskProps {
   title: string;
-  id: number;
 }
-export const TaskCard = ({ title, id }: TaskProps) => {
+export const TaskCard = ({ title }: TaskProps) => {
   return (
     <div className={styles.task}>
       <div>
