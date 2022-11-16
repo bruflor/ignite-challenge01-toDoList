@@ -1,7 +1,6 @@
 import "./global.css";
 import styles from "./App.module.css";
 import { v4 as uuidv4 } from "uuid";
-import { PlusCircle, Trash } from "phosphor-react";
 import { TaskCard } from "./components/TaskCard";
 import { Header } from "./components/Header";
 import { NewTask } from "./components/NewTask";
@@ -40,6 +39,7 @@ export const App = () => {
     });
     setTasks(tasksWithoutDeletedOne);
   }
+
   return (
     <div className={styles.app}>
       <Header />
@@ -59,6 +59,7 @@ export const App = () => {
           {tasks.map((task) => {
             return (
               <TaskCard
+                status={task.isComplete}
                 key={task.id}
                 title={task.title}
                 onDeleteTask={deleteTask}
