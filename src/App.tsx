@@ -25,20 +25,20 @@ export const App = () => {
       <div className={styles.header}>
         <img src={Logo} />
       </div>
-      <main>
+      <div className={styles.wrapper}>
         <form className={styles.formContainer}>
           <input placeholder="Adicione uma nova tarefa" />
           <button>
             Criar <PlusCircle size={20} weight="bold" />
           </button>
         </form>
-        <div>
+        <div className={styles.status}>
           <div>
             <p>Tarefas criadas</p>
             <span>5</span>
           </div>
           <div>
-            <p>Concluídas</p>
+            <p className={styles.done}>Concluídas</p>
             <span>2 de 5</span>
           </div>
         </div>
@@ -47,7 +47,7 @@ export const App = () => {
             return <div>{task.title}</div>;
           })}
         </div>
-      </main>
+      </div>
     </div>
   );
 };
