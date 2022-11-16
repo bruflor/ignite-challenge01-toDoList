@@ -5,8 +5,9 @@ import { PlusCircle, Trash } from "phosphor-react";
 import { TaskCard } from "./components/TaskCard";
 import { Header } from "./components/Header";
 import { NewTask } from "./components/NewTask";
+import { useState } from "react";
 
-const tasks = [
+const initialTasks = [
   {
     title: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
     isComplete: true,
@@ -25,6 +26,9 @@ const tasks = [
   },
 ];
 export const App = () => {
+  const [tasks, setTasks] = useState(initialTasks);
+  const completedTasksFilter = tasks.filter((task) => task.isComplete === true);
+  console.log(completedTasksFilter);
   return (
     <div className={styles.app}>
       <Header />
@@ -33,11 +37,11 @@ export const App = () => {
         <div className={styles.status}>
           <div>
             <p>Tarefas criadas</p>
-            <span>5</span>
+            <span>{tasks.length}</span>
           </div>
           <div>
             <p className={styles.done}>Concluídas</p>
-            <span>2 de 5</span>
+            <span>{`${completedTasksFilter.length} de ${tasks.length}`}</span>
           </div>
         </div>
         <div className={styles.tasksContainer}>
