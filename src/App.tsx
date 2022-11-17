@@ -41,33 +41,10 @@ export const App = () => {
     setTasks(tasksWithoutDeletedOne);
   }
 
-  if (newTask !== "") {
+  function handleCreatedTask(newTask: any) {
     const allNewTask = { title: newTask, isComplete: false, id: uuidv4() };
     setTasks([...tasks, allNewTask]);
-    setNewTask("");
   }
-
-  // function handleInputStatus(
-  //   newStatus: boolean,
-  //   taskId: string,
-  //   taskTitle: string
-  // ) {
-  //   const tasksWithoutChangedTask = tasks.filter((task) => {
-  //     return task.id !== taskId;
-  //   });
-
-  //   console.log(tasksWithoutChangedTask);
-  //   tasksWithoutChangedTask.push({
-  //     title: taskTitle,
-  //     isComplete: newStatus,
-  //     id: taskId,
-  //   });
-
-  //   setTasks(tasksWithoutChangedTask);
-
-  //   console.log(newStatus);
-  //   console.log(tasks);
-  // }
 
   const updateTask = (taskId: string) => {
     //TODO: colect tasks
@@ -90,7 +67,7 @@ export const App = () => {
     <div className={styles.app}>
       <Header />
       <div className={styles.wrapper}>
-        <NewTask setNewTask={setNewTask} />
+        <NewTask onCreateTask={handleCreatedTask} />
         <div className={styles.status}>
           <div>
             <p>Tarefas criadas</p>
