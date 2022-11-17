@@ -8,8 +8,6 @@ interface TaskCardProps {
   onDeleteTask: (title: string) => void;
   status: boolean;
   id: string;
-  taskStatus: any;
-  setTaskStatus: any;
   onStatusChange: any;
 }
 export const TaskCard = ({

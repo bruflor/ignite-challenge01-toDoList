@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { TaskCard } from "./components/TaskCard";
 import { Header } from "./components/Header";
 import { NewTask } from "./components/NewTask";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
 export interface TasksProps {
   title: string;
@@ -32,9 +32,6 @@ const initialTasks = [
 export const App = () => {
   const [tasks, setTasks] = useState(initialTasks);
   const [newTask, setNewTask] = useState("");
-  const [taskStatus, setTaskStatus] = useState(false);
-
-  const completedTasksFilter = tasks.filter((task) => task.isComplete === true);
 
   function deleteTask(taskTitleToDelete: string) {
     const tasksWithoutDeletedOne = tasks.filter((task) => {
@@ -52,7 +49,6 @@ export const App = () => {
     taskId: string,
     taskTitle: string
   ) {
-    // setTaskStatus(newStatus);
     const tasksWithoutChangedTask = tasks.filter((task) => {
       return task.id !== taskId;
     });
@@ -67,6 +63,7 @@ export const App = () => {
     console.log(newStatus);
     console.log(tasks);
   }
+  const completedTasksFilter = tasks.filter((task) => task.isComplete === true);
 
   return (
     <div className={styles.app}>
@@ -92,8 +89,6 @@ export const App = () => {
                 id={task.id}
                 title={task.title}
                 onDeleteTask={deleteTask}
-                taskStatus={taskStatus}
-                setTaskStatus={setTaskStatus}
                 onStatusChange={handleInputStatus}
               />
             );
