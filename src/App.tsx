@@ -46,11 +46,6 @@ export const App = () => {
   }
 
   const updateTask = (taskId: string) => {
-    //TODO: colect tasks
-    //TODO: select task with some specific id or name
-    //TODO: update the information from selected task
-    //TODO: set the state with the updated data
-
     const tasksList = [...tasks];
     const taskToUpdateIndex = tasksList.findIndex((task) => task.id === taskId);
 
