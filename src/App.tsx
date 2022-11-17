@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { TaskCard } from "./components/TaskCard";
 import { Header } from "./components/Header";
 import { NewTask } from "./components/NewTask";
-import { FormEvent, useEffect, useState } from "react";
+import { useState } from "react";
 
 export interface TasksProps {
   title: string;
@@ -32,7 +32,6 @@ const initialTasks = [
 
 export const App = () => {
   const [tasks, setTasks] = useState(initialTasks);
-  const [newTask, setNewTask] = useState("");
 
   function deleteTask(taskTitleToDelete: string) {
     const tasksWithoutDeletedOne = tasks.filter((task) => {
