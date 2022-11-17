@@ -12,11 +12,13 @@ export const NewTask = ({ setNewTask }: any) => {
   function onSubmitNewTask(event: FormEvent) {
     event.preventDefault();
     setNewTask(newTaskText);
+    setNewTaskText("");
   }
   return (
     <form className={styles.formContainer} onSubmit={onSubmitNewTask}>
       <input
         placeholder="Adicione uma nova tarefa"
+        value={newTaskText}
         onChange={handleCreateNewTaskChange}
       />
       <button>
