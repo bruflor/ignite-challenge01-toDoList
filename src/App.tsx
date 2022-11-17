@@ -29,6 +29,7 @@ const initialTasks = [
     id: uuidv4(),
   },
 ];
+
 export const App = () => {
   const [tasks, setTasks] = useState(initialTasks);
   const [newTask, setNewTask] = useState("");
@@ -39,30 +40,50 @@ export const App = () => {
     });
     setTasks(tasksWithoutDeletedOne);
   }
+
   if (newTask !== "") {
     const allNewTask = { title: newTask, isComplete: false, id: uuidv4() };
     setTasks([...tasks, allNewTask]);
     setNewTask("");
   }
-  function handleInputStatus(
-    newStatus: boolean,
-    taskId: string,
-    taskTitle: string
-  ) {
-    const tasksWithoutChangedTask = tasks.filter((task) => {
-      return task.id !== taskId;
-    });
-    console.log(tasksWithoutChangedTask);
-    tasksWithoutChangedTask.push({
-      title: taskTitle,
-      isComplete: newStatus,
-      id: taskId,
-    });
-    setTasks(tasksWithoutChangedTask);
 
-    console.log(newStatus);
-    console.log(tasks);
-  }
+  // function handleInputStatus(
+  //   newStatus: boolean,
+  //   taskId: string,
+  //   taskTitle: string
+  // ) {
+  //   const tasksWithoutChangedTask = tasks.filter((task) => {
+  //     return task.id !== taskId;
+  //   });
+
+  //   console.log(tasksWithoutChangedTask);
+  //   tasksWithoutChangedTask.push({
+  //     title: taskTitle,
+  //     isComplete: newStatus,
+  //     id: taskId,
+  //   });
+
+  //   setTasks(tasksWithoutChangedTask);
+
+  //   console.log(newStatus);
+  //   console.log(tasks);
+  // }
+
+  const updateTask = (taskId: string) => {
+    //TODO: colect tasks
+    //TODO: select task with some specific id or name
+    //TODO: update the information from selected task
+    //TODO: set the state with the updated data
+
+    const tasksList = [...tasks];
+    const taskToUpdateIndex = tasksList.findIndex((task) => task.id === taskId);
+
+    tasksList[taskToUpdateIndex].isComplete =
+      !tasksList[taskToUpdateIndex].isComplete;
+
+    setTasks([...tasksList]);
+  };
+
   const completedTasksFilter = tasks.filter((task) => task.isComplete === true);
 
   return (
@@ -89,7 +110,7 @@ export const App = () => {
                 id={task.id}
                 title={task.title}
                 onDeleteTask={deleteTask}
-                onStatusChange={handleInputStatus}
+                onStatusChange={() => updateTask(task.id)}
               />
             );
           })}

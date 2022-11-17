@@ -21,9 +21,7 @@ export const TaskCard = ({
   function handleDeleteTask() {
     onDeleteTask(title);
   }
-  // function handleInputStatus() {
-  //   setTaskStatus(!taskStatus);
-  // }
+
   function handleChangeStatus() {
     setTaskNewStatus(!taskNewStatus);
     onStatusChange(taskNewStatus, id, title);
