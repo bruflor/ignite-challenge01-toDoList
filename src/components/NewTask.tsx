@@ -4,9 +4,9 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import styles from "./NewTask.module.css";
 export const NewTask = ({ setNewTask }: any) => {
   // const [newTask, setNewTask] = useState("");
-  const [newTaskText, setNewTaskText] = useState();
+  const [newTaskText, setNewTaskText] = useState("");
 
-  function handleCreateNewTaskChange(event: any) {
+  function handleCreateNewTaskChange(event: ChangeEvent<HTMLInputElement>) {
     setNewTaskText(event.target.value);
   }
   function onSubmitNewTask(event: FormEvent) {
