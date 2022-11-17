@@ -7,14 +7,28 @@ interface TaskCardProps {
   title: string;
   onDeleteTask: (title: string) => void;
   status: boolean;
+  id: string;
+  taskStatus: any;
+  setTaskStatus: any;
+  onStatusChange: any;
 }
-export const TaskCard = ({ title, onDeleteTask, status }: TaskCardProps) => {
-  const [taskStatus, setTaskStatus] = useState(status);
+export const TaskCard = ({
+  title,
+  id,
+  onDeleteTask,
+  status,
+  onStatusChange,
+}: TaskCardProps) => {
+  const [taskNewStatus, setTaskNewStatus] = useState(status);
   function handleDeleteTask() {
     onDeleteTask(title);
   }
-  function handleInputStatus() {
-    setTaskStatus(!taskStatus);
+  // function handleInputStatus() {
+  //   setTaskStatus(!taskStatus);
+  // }
+  function handleChangeStatus() {
+    setTaskNewStatus(!taskNewStatus);
+    onStatusChange(taskNewStatus, id, title);
   }
 
   return (
@@ -23,11 +37,11 @@ export const TaskCard = ({ title, onDeleteTask, status }: TaskCardProps) => {
         <input
           type="checkbox"
           id={title}
-          onChange={handleInputStatus}
-          checked={taskStatus ? true : false}
+          onChange={handleChangeStatus}
+          checked={taskNewStatus ? true : false}
         />
         <label htmlFor={title}></label>
-        <span className={taskStatus ? styles.completed : ""}>{title}</span>
+        <span className={taskNewStatus ? styles.completed : ""}>{title}</span>
       </div>
       <button title="Deletar tarefa" onClick={handleDeleteTask}>
         <Trash size={24} />

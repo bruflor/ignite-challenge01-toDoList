@@ -32,6 +32,7 @@ const initialTasks = [
 export const App = () => {
   const [tasks, setTasks] = useState(initialTasks);
   const [newTask, setNewTask] = useState("");
+  const [taskStatus, setTaskStatus] = useState(false);
 
   const completedTasksFilter = tasks.filter((task) => task.isComplete === true);
 
@@ -45,6 +46,26 @@ export const App = () => {
     const allNewTask = { title: newTask, isComplete: false, id: uuidv4() };
     setTasks([...tasks, allNewTask]);
     setNewTask("");
+  }
+  function handleInputStatus(
+    newStatus: boolean,
+    taskId: string,
+    taskTitle: string
+  ) {
+    // setTaskStatus(newStatus);
+    const tasksWithoutChangedTask = tasks.filter((task) => {
+      return task.id !== taskId;
+    });
+    console.log(tasksWithoutChangedTask);
+    tasksWithoutChangedTask.push({
+      title: taskTitle,
+      isComplete: newStatus,
+      id: taskId,
+    });
+    setTasks(tasksWithoutChangedTask);
+
+    console.log(newStatus);
+    console.log(tasks);
   }
 
   return (
@@ -68,8 +89,12 @@ export const App = () => {
               <TaskCard
                 status={task.isComplete}
                 key={task.id}
+                id={task.id}
                 title={task.title}
                 onDeleteTask={deleteTask}
+                taskStatus={taskStatus}
+                setTaskStatus={setTaskStatus}
+                onStatusChange={handleInputStatus}
               />
             );
           })}
