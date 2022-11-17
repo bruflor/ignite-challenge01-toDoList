@@ -8,7 +8,7 @@ interface TaskCardProps {
   onDeleteTask: (title: string) => void;
   status: boolean;
   id: string;
-  onStatusChange: any;
+  onStatusChange: (id: string) => void;
 }
 export const TaskCard = ({
   title,
@@ -24,7 +24,7 @@ export const TaskCard = ({
 
   function handleChangeStatus() {
     setTaskNewStatus(!taskNewStatus);
-    onStatusChange(taskNewStatus, id, title);
+    onStatusChange(id);
   }
 
   return (

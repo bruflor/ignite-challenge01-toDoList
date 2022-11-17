@@ -2,7 +2,10 @@ import { PlusCircle } from "phosphor-react";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 import styles from "./NewTask.module.css";
-export const NewTask = ({ onCreateTask }: any) => {
+interface NewTaskProps {
+  onCreateTask: (task: string) => void;
+}
+export const NewTask = ({ onCreateTask }: NewTaskProps) => {
   const [newTaskText, setNewTaskText] = useState("");
 
   function handleCreateNewTaskChange(event: ChangeEvent<HTMLInputElement>) {
@@ -13,6 +16,7 @@ export const NewTask = ({ onCreateTask }: any) => {
     onCreateTask(newTaskText);
     setNewTaskText("");
   }
+
   return (
     <form className={styles.formContainer} onSubmit={onSubmitNewTask}>
       <input

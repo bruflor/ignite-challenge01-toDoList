@@ -40,7 +40,7 @@ export const App = () => {
     setTasks(tasksWithoutDeletedOne);
   }
 
-  function handleCreatedTask(newTask: any) {
+  function handleCreatedTask(newTask: string) {
     const allNewTask = { title: newTask, isComplete: false, id: uuidv4() };
     setTasks([...tasks, allNewTask]);
   }
