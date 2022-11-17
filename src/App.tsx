@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { TaskCard } from "./components/TaskCard";
 import { Header } from "./components/Header";
 import { NewTask } from "./components/NewTask";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 export interface TasksProps {
   title: string;
@@ -31,6 +31,8 @@ const initialTasks = [
 ];
 export const App = () => {
   const [tasks, setTasks] = useState(initialTasks);
+  const [newTask, setNewTask] = useState("");
+
   const completedTasksFilter = tasks.filter((task) => task.isComplete === true);
 
   function deleteTask(taskTitleToDelete: string) {
@@ -39,12 +41,17 @@ export const App = () => {
     });
     setTasks(tasksWithoutDeletedOne);
   }
+  if (newTask !== "") {
+    const allNewTask = { title: newTask, isComplete: false, id: uuidv4() };
+    setTasks([...tasks, allNewTask]);
+    setNewTask("");
+  }
 
   return (
     <div className={styles.app}>
       <Header />
       <div className={styles.wrapper}>
-        <NewTask />
+        <NewTask setNewTask={setNewTask} />
         <div className={styles.status}>
           <div>
             <p>Tarefas criadas</p>
