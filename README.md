@@ -14,7 +14,7 @@ This project was created with Vite. Clone down this repository and run this foll
 #### 1. npm install
 #### 2. npm run dev
 
-or you can check here the <a href="ignite-challenge01-to-do-list-e6e2zkpma-brnflor-gmailcom.vercel.app" target="_blank">**deployed version** </a>
+or you can check here the <a href="https://ignite-challenge01-to-do-list.vercel.app/" target="_blank">**deployed version** </a>
 
 ## Process and objectives
 
